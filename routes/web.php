@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard.index');
 });
+Route::get('/kategori', function () {
+    return view('kategoriBerita.index');
+});
+Route::get('/berita', function () {
+    return view('berita.index');
+});
+
+Route::get('/formBerita', function () {
+    return view('berita.form');
+    return view('kategoriBerita.index');
+});
+Route::get('/formkategoriBerita', function () {
+    return view('kategoriBerita.form');
+    return view('kategoriBerita.index');
+});
