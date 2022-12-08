@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\KategoriBeritaRequest;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Crypt;
@@ -36,12 +37,12 @@ class KategoriController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KategoriBeritaRequest $request)
     {
         Kategori::create([
             'nama' => $request->nama,
         ]);
-        return redirect('kategori-berita');
+        return redirect('kategori-berita')->with('success','Data Berhasil Diinput');
     }
 
     /**
@@ -86,7 +87,7 @@ class KategoriController extends Controller
             'nama' => $request->nama,
         ]);
 
-        return redirect('kategori-berita');
+        return redirect('kategori-berita')->with('success','Data Berhasil Diubah');
     }
 
     /**
@@ -100,6 +101,6 @@ class KategoriController extends Controller
         $KategoriBerita = Kategori::where('id', $id)->first();
         $KategoriBerita->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Data Berhasil Dihapus');
     }
 }
