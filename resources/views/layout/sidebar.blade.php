@@ -33,7 +33,7 @@
         <li class="nav-item dropdown {{ request()->is('/kategori') || request()->is('/berita') ? 'active' : '' }}">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Menu Berita</span></a>
           <ul class="dropdown-menu">
-            <li class="{{ request()->is('/kategori') ? 'active' : '' }}"><a class="nav-link" href="/kategori">Kategori Berita</a></li>
+            <li class="{{ request()->is('/kategori') ? 'active' : '' }}"><a class="nav-link" href="{{ url ('kategori-berita')}}">Kategori Berita</a></li>
             <li class="{{ request()->is('/berita') ? 'active' : '' }}"><a class="nav-link" href="/berita">Berita</a></li>
             <li class=" active "><a href="/komentar" class="nav-link">Komentar</a></li>
           </ul>

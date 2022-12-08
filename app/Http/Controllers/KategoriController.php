@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kategori;
+use Illuminate\Support\Facades\Crypt;
+
 
 class KategoriController extends Controller
 {
@@ -13,7 +16,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('kategoriBerita/index');
+        $KategoriBerita = Kategori::get();
+        return view('kategoriBerita.index', compact('KategoriBerita'));
     }
 
     /**
@@ -23,7 +27,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategoriBerita.form');
     }
 
     /**
@@ -34,7 +38,10 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Kategori::create([
+            'nama' => $request->nama,
+        ]);
+        return redirect('kategori-berita');
     }
 
     /**
@@ -45,7 +52,7 @@ class KategoriController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +63,14 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $id = Crypt::decryptString($id);
+        } catch (decryptException $e) {
+            abort(404);
+        }
+
+        $KategoriBerita = Kategori::find($id);
+        return view('kategoriBerita.form', compact('KategoriBerita'));
     }
 
     /**
@@ -68,7 +82,11 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Kategori::where('id', $id)->update([
+            'nama' => $request->nama,
+        ]);
+
+        return redirect('kategori-berita');
     }
 
     /**
@@ -79,6 +97,9 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $KategoriBerita = Kategori::where('id', $id)->first();
+        $KategoriBerita->delete();
+
+        return redirect()->back();
     }
 }
