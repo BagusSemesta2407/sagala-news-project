@@ -15,15 +15,7 @@ class Berita extends Model
     protected $guarded = ['id'];
 
     protected $appends = ['image_url'];
-    /**
-     * Get the Kategori Berita that owns the Berita
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    // public function KategoriBerita(): BelongsTo
-    // {
-    //     return $this->belongsTo(Kategori::class);
-    // }
+    
 
     /**
      * Get the user that owns the Berita
@@ -79,7 +71,7 @@ class Berita extends Model
     public function getImageUrlAttribute()
     {
         if ($this->foto) {
-            return asset('storage/image/berita/' . $this->foto);
+            return asset('storage/public/image/berita/' . $this->foto);
         } else {
             return asset('images/customer/' . $this->defaultFiles['avatar']);
         }

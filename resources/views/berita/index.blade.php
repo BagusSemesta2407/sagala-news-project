@@ -60,35 +60,40 @@
                   <tbody>
                     @foreach ($Berita as $item)
                       <tr>
-                        <td>
+                        <td class="text-center">
                           {{ $loop->iteration }}
-                        </td>
-                        <td>
-                          {{ $item->judul }}
                           <div class="table-links">
                             <a href="#">View</a>
                             <div class="bullet"></div>
                             <a href="{{ route('berita.edit', Crypt::encryptString($item->id))}}">Edit</a>
+                            <div class="bullet"></div>
                             <form action="{{ route('berita.destroy', $item->id) }}" method="POST" class="d-inline">
                               @csrf
                                <input type="hidden" name="_method" value="DELETE">
-                                <button class="btn btn-sm btn-danger" type="submit">
-                                  Hapus
-                                </button>
+                                <button type="submit">Hapus</button> 
                               </form>
                           </div>
                         </td>
-                        <td>
+                        <td class="text-center">
+                          {{ $item->judul }}
+                        </td>
+                        <td class="text-center">
                           {{ @$item->kategoriBerita->nama }}
                         </td>
-                        <td>
+                        <td class="text-center">
                           <img src="{{ $item->image_url }}" width="70px"
                             height="70px" alt="no-image" class="img-popup">
                         </td>
-                        <td>
+                        <td class="text-center">
                           {{ $item->tanggal }}
                         </td>
-                        <td><div class="badge badge-primary">{{ $item->status }}</div></td>
+                        <td class="text-center">
+                          @if ($item->status == 'Pending')
+                            <div class="badge badge-warning">{{ $item->status }}</div> 
+                          @else
+                            <div class="badge badge-primary">{{ $item->status }}</div> 
+                          @endif
+                        </td>
                       </tr>
                     @endforeach
                   </tbody>

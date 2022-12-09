@@ -65,35 +65,60 @@
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Berita</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Berita" value="{{ old ('nama', @$Berita->nama)}}">
+                  <input type="text" class="form-control @error('nama')
+                     is-invalid
+                  @enderror" id="nama" name="nama" placeholder="Nama Berita" value="{{ old ('nama', @$Berita->nama)}}">
+                  @if ($errors->has('nama'))
+                    <span class="col-12 text-danger">{{ $errors->first('nama') }}</span>
+                  @endif
                 </div>
               </div>
 
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul Berita</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Berita" value="{{ old ('judul', @$Berita->judul)}}">
+                  <input type="text" class="form-control @error('judul')
+                    is-invalid
+                  @enderror" id="judul" name="judul" placeholder="Judul Berita" value="{{ old ('judul', @$Berita->judul)}}">
+                  @if ($errors->has('judul'))
+                    <span class="col-12 text-danger">{{ $errors->first('judul') }}</span>
+                  @endif
                 </div>
               </div>
 
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi</label>
                 <div class="col-sm-12 col-md-7">
-                  <textarea class="summernote-simple form-control textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Berita" >{{ old ('deskripsi', @$Berita->deskripsi)}}</textarea>
+                  <textarea class="summernote-simple form-control textarea @error('deskripsi')
+                    is-invalid
+                  @enderror" id="deskripsi" name="deskripsi" placeholder="Deskripsi Berita" >{{ old ('deskripsi', @$Berita->deskripsi)}}</textarea>
+                  @if ($errors->has('deskripsi'))
+                    <span class="col-12 text-danger">{{ $errors->first('deskripsi') }}</span>
+                  @endif
                 </div>
               </div>
 
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tanggal Berita</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Tanggal Berita" value="{{ old ('tanggal', @$Berita->tanggal)}}">
+                  <input type="date" class="form-control @error('tanggal')
+                    is-invalid
+                  @enderror" id="tanggal" name="tanggal" placeholder="Tanggal Berita" value="{{ old ('tanggal', @$Berita->tanggal)}}">
+                  @if ($errors->has('tanggal'))
+                    <span class="col-12 text-danger">{{ $errors->first('tanggal') }}</span>
+                  @endif
                 </div>
               </div>
 
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Waktu Berita</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="time" class="form-control" id="waktu" name="waktu" placeholder="Waktu Berita" value="{{ old ('waktu', @$Berita->waktu)}}">
+                  <input type="time" class="form-control @error('waktu')
+                    is-invalid
+                  @enderror" id="waktu" name="waktu" placeholder="Waktu Berita" value="{{ old ('waktu', @$Berita->waktu)}}">
+                  @if ($errors->has('waktu'))
+                    <span class="col-12 text-danger">{{ $errors->first('waktu') }}</span>
+                  @endif
                 </div>
               </div>
 
@@ -102,22 +127,34 @@
                 <div class="col-sm-12 col-md-7">
                   <div id="image-preview" class="image-preview">
                     <label for="image-upload" id="foto">Choose File</label>
-                    <input type="file" class="dropify" name="foto" id="foto" data-default-file="{{ @$berita->image_url }}" data-allowed-file-extensions="jpeg jpg png">
+                    <input type="file" class="dropify @error('image_url')
+                      is-invalid
+                    @enderror" name="foto" id="foto" data-default-file="{{ @$berita->image_url }}" data-allowed-file-extensions="jpeg jpg png">
                   </div>
+                  @if ($errors->has('image_url'))
+                  <span class="col-12 text-danger">{{ $errors->first('image_url') }}</span>
+                @endif
                 </div>
               </div>
 
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tagar Berita</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control inputtags" id="tag" name="tag" placeholder="Tagar Berita" value="{{ old ('tag', @$Berita->tag)}}">
+                  <input type="text" class="form-control inputtags @error('tag')
+                    is-invalid
+                  @enderror" id="tag" name="tag" placeholder="Tagar Berita" value="{{ old ('tag', @$Berita->tag)}}">
+                  @if ($errors->has('tag'))
+                    <span class="col-12 text-danger">{{ $errors->first('tag') }}</span>
+                  @endif
                 </div>
               </div>
 
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
                 <div class="col-sm-12 col-md-7">
-                  <select class="form-control selectric" name="status">
+                  <select class="form-control selectric @error('status')
+                    is-invalid
+                  @enderror" name="status">
                     <option disabled selected>Pilih Status</option>
 
                     <option value="Pending"
@@ -127,6 +164,9 @@
                     {{ old('status', @$Berita->status) == 'Publish' ? 'selected' : '' }}>
                     Publish</option>
                   </select>
+                  @if ($errors->has('status'))
+                    <span class="col-12 text-danger">{{ $errors->first('status') }}</span>
+                  @endif
                 </div>
               </div>
               
