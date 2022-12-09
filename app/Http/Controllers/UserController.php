@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -13,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $User = User::get();
+        return view('masterAkun.index', compact('User'));
     }
 
     /**
@@ -23,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('masterAkun.form');
     }
 
     /**
@@ -34,7 +37,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'    => bcrypt('123456')
+        ]);
+
+        return redirect('user');
     }
 
     /**
@@ -56,7 +65,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $id = Crypt::decryptString($id);
+        } catch (decryptException $e) {
+            abort(404);
+        }
+
+        $User = User::find($id);
+        return view('masterAkun.form', compact('User'));
     }
 
     /**
@@ -68,7 +84,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        User::where('id', $id)->update([
+            'name'      => $request->name,
+            'email'     => $request->email
+        ]);
+
+        return redirect('user');
     }
 
     /**
@@ -79,6 +100,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $User = User::where('id',$id)->first();
+        $User->delete();
+
+        return redirect()->back();
     }
 }

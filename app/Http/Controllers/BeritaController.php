@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+Use App\Models\Berita;
+Use App\Models\Kategori;
+Use App\Models\User;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Crypt;
 
 class BeritaController extends Controller
 {
@@ -13,7 +18,8 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        //
+        $Berita = Berita::get();
+        return view('berita.index', compact('Berita'));
     }
 
     /**
@@ -23,7 +29,13 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        $kategoriBerita = Kategori::oldest('nama')->get();
+        $User = User::oldest('name')->get();
+
+        return view('berita.form',[
+            'kategoriBerita' => $kategoriBerita,
+            'User'           => $User
+        ]);
     }
 
     /**
@@ -34,7 +46,21 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = Berita::saveImage($request);
+
+        Berita::create([
+            'kategori_id'   => $request->kategori_id,
+            'nama'          => $request->nama,
+            'judul'         => $request->judul,
+            'deskripsi'     => $request->deskripsi,
+            'tanggal'       => $request->tanggal,
+            'waktu'         => $request->waktu,
+            'tag'           => $request->tag,
+            'status'        => $request->status,
+            'foto'         => $image,
+        ]);
+
+        return redirect('berita');
     }
 
     /**
@@ -56,7 +82,17 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $id = Crypt::decryptString($id);
+        } catch (decryptException $e) {
+            abort(404);
+        }
+
+        $kategoriBerita = Kategori::oldest('nama')->get();
+
+        $Berita = Berita::find($id);
+
+        return view('berita.form', compact(['Berita', 'kategoriBerita']));
     }
 
     /**
@@ -68,7 +104,28 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'kategori_id'   => $request->kategori_id,
+            'nama'          => $request->nama,
+            'judul'         => $request->judul,
+            'deskripsi'     => $request->deskripsi,
+            'tanggal'       => $request->tanggal,
+            'waktu'         => $request->waktu,
+            'tag'           => $request->tag,
+            'status'        => $request->status,
+        ];
+
+        $image = Berita::saveImage($request);
+
+        if ($image) {
+            $data['foto'] = $image;
+
+            Berita::deleteImage($id);
+        }
+
+        Berita::where('id', $id)->update($data);
+
+        return redirect('berita');
     }
 
     /**
@@ -79,6 +136,15 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Berita = Berita::find($id);
+
+        if ($Berita->foto) {
+            Berita::deleteImage($id);
+        }
+
+        $Berita->delete();
+        
+
+        return redirect()->back();
     }
 }

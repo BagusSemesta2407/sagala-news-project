@@ -5,6 +5,8 @@ use App\Http\Controllers\{
 
     //Controller Admin
     KategoriController,
+    BeritaController,
+    UserController,
 };
 use App\Http\Controllers\API\AuthController;
 use Illuminate\Support\Facades\Auth;
@@ -25,24 +27,14 @@ Route::get('/', function () {
 Route::get('/kategori', function () {
     return view('kategoriBerita.index');
 });
+//Kategori Berita
 Route::resource('kategori-berita', KategoriController::class);
 
-Route::get('/berita', function () {
-    return view('berita.index');
-});
+//Berita
+Route::resource('berita', BeritaController::class);
 
-Route::get('/formBerita', function () {
-    return view('berita.form');
-    return view('kategoriBerita.index');
-});
-Route::get('/formkategoriBerita', function () {
-    return view('kategoriBerita.form');
-    return view('kategoriBerita.index');
-});
-
-Route::get('/masterAkun', function () {
-    return view('masterAkun.index');
-});
+//User
+Route::resource('user', UserController::class);
 
 Route::get('/komentar', function () {
     return view('komentar.index');

@@ -49,7 +49,7 @@
             </div>
             <div class="card-body">
               <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Kategori</label>
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori Berita</label>
                 <div class="col-sm-12 col-md-7">
                   <input type="text" class="form-control" id="nama" name="nama" placeholder="Kategori Berita" value="{{ old ('nama', @$KategoriBerita->nama)}}">
                 </div>

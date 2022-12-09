@@ -15,15 +15,22 @@ return new class extends Migration
     {
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('kategori_id');
+            $table->foreignId('user_id')->nullable()
+                  ->constrained()
+                  ->onDelete('set null')
+                  ->onUpdate('cascade');
+            $table->foreignId('kategori_id')->nullable()
+                  ->constrained()
+                  ->onDelete('set null')
+                  ->onUpdate('cascade');
             $table->string('nama');
             $table->string('judul');
-            $table->string('penulis');
+            $table->string('foto');
             $table->date('tanggal');
             $table->time('waktu');
             $table->string('deskripsi');
             $table->string('tag');
+            $table->enum('status', ['Publish', 'Pending'])->default('Pending');
             $table->timestamps();
         });
     }
