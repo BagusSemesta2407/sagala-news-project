@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BeritaRequest;
 use Illuminate\Http\Request;
 Use App\Models\Berita;
 Use App\Models\Kategori;
@@ -44,7 +45,7 @@ class BeritaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BeritaRequest $request)
     {
         $image = Berita::saveImage($request);
 

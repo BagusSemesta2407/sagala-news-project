@@ -74,11 +74,10 @@
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 
     <!-- Page Specific JS File -->
-    <script src="{{ asset('assets/js/page/index.js') }}"></script>
     <script src="{{ asset('assets/plugins/izitoast/dist/js/iziToast.min.js') }}"></script>
 
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
 
             @if (session('success'))
