@@ -14,23 +14,17 @@
             <span> Dashboard </span>
           </a>
         </li>
-        
-        {{-- <li class="nav-item dropdown {{ request()->is('/') || request()->is('/masterAkun') ? 'active' : '' }}">
-          <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-          <ul class="dropdown-menu">
-            <li class="{{ request()->is('/masterAkun') ? 'active' : '' }}"><a class="nav-link" href="/masterAkun">Master Akun</a></li>
-          </ul>
-        </li> --}}
 
         <li class="menu-header">Manajemen User</li>
-        <li class="{{ request()->is('/') ? 'active' : '' }}">
-          <a class="nav-link" href="/">
+        <li class="{{ request()->is('user*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ url('user')}}">
             <i class="fas fa-users"></i>
             <span> User </span>
           </a>
         </li>
+
         <li class="menu-header">Berita</li>
-        <li class="nav-item dropdown {{ request()->is('/kategori') || request()->is('/berita') ? 'active' : '' }}">
+        <li class="nav-item dropdown {{ request()->is('kategori-berita*') || request()->is('berita*') ? 'active' : '' }}">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-newspaper"></i> <span>Menu Berita</span></a>
           <ul class="dropdown-menu">
             <li class="{{ request()->is('kategori-berita') ? 'active' : '' }}">
@@ -44,10 +38,5 @@
             </li>
           </ul>
         </li>
-      {{-- <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-        <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-          <i class="fas fa-rocket"></i> Documentation
-        </a>
-      </div> --}}
   </aside>
 </div>
