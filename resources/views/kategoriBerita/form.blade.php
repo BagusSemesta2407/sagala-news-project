@@ -51,9 +51,15 @@
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori Berita</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" id="nama" name="nama" placeholder="Kategori Berita" value="{{ old ('nama', @$KategoriBerita->nama)}}">
+                  <input type="text" class="form-control @error('nama')
+                     is-invalid
+                  @enderror" id="nama" name="nama" placeholder="Kategori Berita" value="{{ old ('nama', @$KategoriBerita->nama)}}">
                 </div>
               </div>
+              @if ($errors->has('nama'))
+                <span class="col-12 text-danger">{{ $errors->first('nama') }}</span>
+              @endif
+      
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                 <div class="col-sm-12 col-md-7">
