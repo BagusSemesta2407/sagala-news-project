@@ -39,3 +39,7 @@ Route::resource('user', UserController::class);
 Route::get('/komentar', function () {
     return view('komentar.index');
 });
+
+Route::get('/home', function() {
+    return view('user.home');
+});
