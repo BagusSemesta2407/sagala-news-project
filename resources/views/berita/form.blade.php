@@ -131,7 +131,7 @@
                       is-invalid
                     @enderror" name="foto" id="foto" data-default-file="{{ @$berita->image_url }}" data-allowed-file-extensions="jpeg jpg png">
                   </div>
-                  @if ($errors->has('image_url'))
+                  @if ($errors->has('image_u'))
                   <span class="col-12 text-danger">{{ $errors->first('image_url') }}</span>
                 @endif
                 </div>

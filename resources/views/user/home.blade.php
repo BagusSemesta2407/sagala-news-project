@@ -229,17 +229,19 @@
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">           
                             <div class="whats-news-caption">
                                 <div class="row">
+                                    @foreach ($Berita as $item)
                                     <div class="col-lg-6 col-md-6">
                                         <div class="single-what-news mb-100">
                                             <div class="what-img">
-                                                <img src="template/assets/img/news/whatNews1.jpg" alt="">
+                                                <img src="{{$item->image_url}}" alt="" width="600" height="400">
                                             </div>
                                             <div class="what-cap">
-                                                <span class="color1">Night party</span>
+                                                <span class="color1">Night </span>
                                                 <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                     <div class="col-lg-6 col-md-6">
                                         <div class="single-what-news mb-100">
                                             <div class="what-img">

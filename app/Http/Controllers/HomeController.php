@@ -11,7 +11,8 @@ class HomeController extends Controller
 {
     public function index() 
     {
-        $Berita = Berita::get();
+        $Berita = Berita::where('status', 'Publish')
+        ->get();
         $kategoriBerita = Kategori::get();
 
         return view('user.home', compact('Berita', 'kategoriBerita'));

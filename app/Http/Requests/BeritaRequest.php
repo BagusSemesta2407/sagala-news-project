@@ -36,7 +36,7 @@ class BeritaRequest extends FormRequest
         ];
 
         if ($this->_method != 'put') {
-            $rules['image_url'] = 'required';
+            $rules['foto'] = 'required';
         }
 
         return $rules;
@@ -49,7 +49,7 @@ class BeritaRequest extends FormRequest
             'judul.required'=>'Judul Berita Wajib Diisi',
             'tanggal.required'=>'Tanggal Berita Wajib Diisi',
             'waktu.required'=>'Waktu Wajib Diisi',
-            'image_url.required'=>'Thumbnail Wajib Diisi',
+            'foto.required'=>'Thumbnail Wajib Diisi',
             'deskripsi.required'=>'Deskripsi Wajib Diisi',
             'tag.required'=>'Tag Wajib Diisi',
             'status.required'=>'Status Wajib Dipilih'
