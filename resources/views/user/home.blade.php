@@ -32,7 +32,7 @@
                                 <img src="{{ $item->image_url }}" alt="">
                                 <div class="trend-top-cap">
                                     <span>{{@$item->kategoriBerita->nama}}</span>
-                                    <h2><a href="details.html">{{$item->Judul}}</a></h2>
+                                    <h2><a href="details.html">{{$item->judul}}</a></h2>
                                 </div>
                             </div> 
                         @endforeach

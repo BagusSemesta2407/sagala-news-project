@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     KategoriController,
     BeritaController,
     UserController,
+    HomeController,
 };
 use App\Http\Controllers\API\AuthController;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,8 @@ Route::resource('berita', BeritaController::class);
 
 //User
 Route::resource('user', UserController::class);
+
+Route::get('user-home', [HomeController::class, 'index'])->name('use-home');
 
 Route::get('/komentar', function () {
     return view('komentar.index');
