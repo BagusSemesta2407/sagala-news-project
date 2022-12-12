@@ -28,6 +28,8 @@ Route::get('/', function () {
 Route::get('/kategori', function () {
     return view('kategoriBerita.index');
 });
+
+//Admin
 //Kategori Berita
 Route::resource('kategori-berita', KategoriController::class);
 
@@ -37,6 +39,9 @@ Route::resource('berita', BeritaController::class);
 //User
 Route::resource('user', UserController::class);
 
+
+//User
+//HomeUser
 Route::get('user-home', [HomeController::class, 'index'])->name('use-home');
 
 Route::get('/komentar', function () {

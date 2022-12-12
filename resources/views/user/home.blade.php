@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Trending Area Start -->
-<div class="trending-area fix">
+{{-- <div class="trending-area fix">
     <div class="container">
         <div class="trending-main">
             <!-- Trending Tittle -->
@@ -127,10 +127,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Trending Area End -->
 <!--   Weekly-News start -->
-<div class="weekly-news-area pt-50">
+{{-- <div class="weekly-news-area pt-50">
     <div class="container">
        <div class="weekly-wrapper">
             <!-- section Tittle -->
@@ -185,7 +185,7 @@
             </div>
        </div>
     </div>
-</div>           
+</div>            --}}
 <!-- End Weekly-News -->
 <!-- Whats New Start -->
 <section class="whats-news-area pt-50 pb-20">
@@ -195,7 +195,7 @@
             <div class="row d-flex justify-content-between">
                 <div class="col-lg-3 col-md-3">
                     <div class="section-tittle mb-30">
-                        <h3>Whats New</h3>
+                        <h3>Berita Terbaru</h3>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
@@ -203,12 +203,18 @@
                         <!--Nav Button  -->                                            
                         <nav>                                                                     
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Lifestyle</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Travel</a>
-                                <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Fashion</a>
-                                <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Sports</a>
-                                <a class="nav-item nav-link" id="nav-technology" data-toggle="tab" href="#nav-techno" role="tab" aria-controls="nav-contact" aria-selected="false">Technology</a>
+                                <a href="#nav-home" 
+                                    class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" 
+                                    role="tab" aria-controls="nav-home" aria-selected="true">
+                                    Semua Berita
+                                </a>
+                                @foreach ($kategoriBerita as $item)
+                                    <a href="#nav-home" 
+                                        class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" 
+                                        role="tab" aria-controls="nav-profile" aria-selected="false">
+                                        {{ $item->nama }}
+                                    </a>
+                                @endforeach
                             </div>
                         </nav>
                         <!--End Nav Button  -->
