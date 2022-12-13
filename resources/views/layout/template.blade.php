@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/izitoast/dist/css/iziToast.min.css') }}">
 
+    <!-- Dropify -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/dropify/dist/css/dropify.min.css') }}">
+
 </head>
 
 <body>
@@ -75,6 +78,9 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/plugins/izitoast/dist/js/iziToast.min.js') }}"></script>
 
+    {{-- dropify --}}
+    <script src="{{ asset('assets/plugins/dropify/dist/js/dropify.min.js') }}"></script>
+
     <script type="text/javascript">
         $(document).ready(function() {
 
@@ -91,6 +97,8 @@
                     position: 'bottomCenter'
                 });
             @endif ()
+
+            $('.dropify').dropify();
         });
     </script>
 </body>

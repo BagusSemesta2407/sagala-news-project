@@ -1,7 +1,9 @@
 @section('title')
     Tambah Data Berita
 @endsection
+
 @extends('layout/template')
+
 @section('content')
 <div class="main-content">
   <section class="section">
@@ -9,6 +11,7 @@
       <div class="section-header-back">
         <a href="{{ route('berita.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
       </div>
+
       <h1>
         @if (@$Berita->exists)
             Edit
@@ -23,6 +26,7 @@
         @endif
         Data Berita
       </h1>
+
       <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
         <div class="breadcrumb-item"><a href="#">Posts</a></div>
@@ -34,8 +38,8 @@
             action="{{ route('berita.update', $Berita) }}">
             @method('put')
         @else
-            <form id="modalForm" class="forms-sample" enctype="multipart/form-data" method="POST"
-                action="{{ route('berita.store') }}">
+          <form id="modalForm" class="forms-sample" enctype="multipart/form-data" method="POST"
+              action="{{ route('berita.store') }}">
     @endif
 
     {{ csrf_field() }}
@@ -46,6 +50,7 @@
             <div class="card-header">
               <h4>Data Berita</h4>
             </div>
+
             <div class="card-body">
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori Berita</label>
@@ -127,13 +132,11 @@
                 <div class="col-sm-12 col-md-7">
                   <div id="image-preview" class="image-preview">
                     <label for="image-upload" id="image-label">Choose File</label>
-                    <input type="file" class="dropify @error('image_url')
-                      is-invalid
-                    @enderror" name="foto" id="image-upload" data-default-file="{{ @$berita->image_url }}" data-allowed-file-extensions="jpeg jpg png">
+                    <input type="file" class="dropify @error('image_url') is-invalid @enderror" name="foto" id="image-upload" data-default-file="{{ @$berita->image_url }}">
                   </div>
                   @if ($errors->has('image_u'))
-                  <span class="col-12 text-danger">{{ $errors->first('image_url') }}</span>
-                @endif
+                    <span class="col-12 text-danger">{{ $errors->first('image_url') }}</span>
+                  @endif
                 </div>
               </div>
 
@@ -169,7 +172,7 @@
                   @endif
                 </div>
               </div>
-              
+
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                 <div class="col-sm-12 col-md-7">
@@ -184,3 +187,4 @@
   </section>
 </div>
 @endsection
+
