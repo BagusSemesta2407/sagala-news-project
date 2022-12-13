@@ -17,4 +17,11 @@ class HomeController extends Controller
 
         return view('user.home', compact('Berita', 'kategoriBerita'));
     }
+
+    public function show($id)
+    {
+        $berita = Berita::find($id);
+
+        return view('user.detail', compact('berita'));
+    }
 }

@@ -126,10 +126,10 @@
                 <label for="foto" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
                 <div class="col-sm-12 col-md-7">
                   <div id="image-preview" class="image-preview">
-                    <label for="image-upload" id="foto">Choose File</label>
+                    <label for="image-upload" id="image-label">Choose File</label>
                     <input type="file" class="dropify @error('image_url')
                       is-invalid
-                    @enderror" name="foto" id="foto" data-default-file="{{ @$berita->image_url }}" data-allowed-file-extensions="jpeg jpg png">
+                    @enderror" name="foto" id="image-upload" data-default-file="{{ @$berita->image_url }}" data-allowed-file-extensions="jpeg jpg png">
                   </div>
                   @if ($errors->has('image_u'))
                   <span class="col-12 text-danger">{{ $errors->first('image_url') }}</span>

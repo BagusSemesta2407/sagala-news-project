@@ -26,10 +26,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('judul');
             $table->string('foto');
-            $table->date('tanggal');
-            $table->time('waktu');
-            $table->string('deskripsi');
-            $table->string('tag');
+            $table->dateTime('tanggal');
+            $table->text('deskripsi');
             $table->enum('status', ['Publish', 'Pending'])->default('Pending');
             $table->timestamps();
         });

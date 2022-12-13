@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/izitoast/dist/css/iziToast.min.css') }}">
 
-
 </head>
 
 <body>
@@ -75,7 +74,6 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/plugins/izitoast/dist/js/iziToast.min.js') }}"></script>
-
 
     <script type="text/javascript">
         $(document).ready(function() {

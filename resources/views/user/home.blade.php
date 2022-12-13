@@ -1,5 +1,7 @@
 @extends('user.layout.template')
-
+@section('title')
+    Home
+@endsection
 @section('content')
 
 <!-- Trending Area Start -->
@@ -233,11 +235,11 @@
                                     <div class="col-lg-6 col-md-6">
                                         <div class="single-what-news mb-100">
                                             <div class="what-img">
-                                                <img src="{{$item->image_url}}" alt="" width="600" height="400">
+                                                <img src="{{$item->image_url}}" alt="" width="400" height="350">
                                             </div>
                                             <div class="what-cap">
-                                                <span class="color1">Night </span>
-                                                <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                                <span class="color1">{{$item->nama}} </span>
+                                                <h4><a href="{{ route ('user-detail', $item->id)}}">{{$item->judul}}</a></h4>
                                             </div>
                                         </div>
                                     </div>

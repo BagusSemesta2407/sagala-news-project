@@ -39,10 +39,16 @@ Route::resource('berita', BeritaController::class);
 //User
 Route::resource('user', UserController::class);
 
+//Profil
+Route::get('/profil', function () {
+    return view('profil');
+});
+
 
 //User
 //HomeUser
-Route::get('user-home', [HomeController::class, 'index'])->name('use-home');
+Route::get('user-home', [HomeController::class, 'index'])->name('user-home');
+Route::get('user-detail/{id}',[HomeController::class, 'show'])->name('user-detail');
 
 Route::get('/komentar', function () {
     return view('komentar.index');
